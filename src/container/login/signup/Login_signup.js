@@ -47,10 +47,10 @@ function Login_signup(props) {
                             <div className="col-md-4 form-group">
                                 {
                                     user === 'login' ?
-                                        <div className="text-center">create an new account <button onClick={()=>setUser('signup')}>signup</button>
+                                        <div className="text-center">create an new account <button onClick={() => setUser('signup')}>signup</button>
                                         </div>
                                         :
-                                        <div className="text-center">already an account <button onClick={()=>setUser('login')}>login</button>
+                                        <div className="text-center">already an account <button onClick={() => setUser('login')}>login</button>
                                         </div>
                                 }
 
