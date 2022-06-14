@@ -1006,6 +1006,7 @@ section {
 
 .appointment .php-email-form .form-group {
   padding-bottom: 8px;
+  margin: 0 auto;
 }
 
 .appointment .php-email-form .validate {
@@ -1074,7 +1075,7 @@ section {
 }
 
 .appointment .php-email-form input, .appointment .php-email-form select {
-  height: 44px;
+  /* height: 44px; */
 }
 
 .appointment .php-email-form textarea {
@@ -1085,11 +1086,11 @@ section {
   background: #FF6337;
   border: 0;
   padding: 10px 35px;
+  margin: 15px 0px;
   color: #fff;
   transition: 0.4s;
   border-radius: 50px;
 }
-
 .appointment .php-email-form button[type="submit"]:hover {
   background: #1c84e3;
 }
