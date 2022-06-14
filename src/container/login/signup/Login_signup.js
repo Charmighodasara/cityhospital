@@ -8,6 +8,7 @@ function Login_signup(props) {
         <main id="main">
             <section id="appointment" className="appointment">
                 <div className="container">
+                    {/* heading  */}
                     <div className="section-title">
                         {
                             forgot === 'true' ?
@@ -19,6 +20,7 @@ function Login_signup(props) {
                                     <h2>signup</h2>
                         }
                     </div>
+                    {/* name  */}
                     <div className="php-email-form">
                         <div>{
                             forgot === 'true' ?
@@ -33,6 +35,7 @@ function Login_signup(props) {
                                     </div>
                         }
                         </div>
+                        {/* email  */}
                         <div>
                             {
                                 forgot === 'true' ?
@@ -52,9 +55,8 @@ function Login_signup(props) {
                                             <div className="validate" />
                                         </div>
                             }
-
-
-                        </div>
+                        </div> 
+                        {/* password  */}
                         <div className="row">
                             {forgot === 'true' ?
                                 null
@@ -75,6 +77,7 @@ function Login_signup(props) {
                             }
 
                         </div>
+                         {/* submit  */}
                         {
                             forgot === 'true' ?
                                 <div className="text-center"><button type="submit">submit</button></div>
