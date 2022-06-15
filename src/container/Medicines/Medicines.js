@@ -41,25 +41,7 @@ function Medicines(props) {
     ]
     return (
         <div>
-            {/* {
-                orgData.map((o, i) => {
-                    return (
-                        <Card>
-                            <CardBody>
-                                <CardTitle tag="h5">
-                                    {o.name}
-                                </CardTitle>
-                                <CardSubtitle className="mb-2 text-muted" tag="h6">
-                                    {o.id}
-                                </CardSubtitle>
-                                <CardText> {o.expiry} </CardText>
-                                <CardText> {o.price} </CardText>
-                            </CardBody>
-                        </Card>
-
-                    )
-                })
-            } */}
+           
             <List  data={orgData} />
         </div>
     );
