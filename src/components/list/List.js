@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap';
 
 
-function List({data}) {
+function List({ data }) {
     return (
         <div>
             {
@@ -16,8 +16,14 @@ function List({data}) {
                                 <CardSubtitle className="mb-2 text-muted" tag="h6">
                                     {o.id}
                                 </CardSubtitle>
-                                <CardText> {o.expiry} </CardText>
+                                {
+                                    o.expiry !== undefined ?
+                                        <CardText> {o.expiry} </CardText>
+                                        :
+                                        null
+                                }
                                 <CardText> {o.price} </CardText>
+                                {/* <Button color="dark" outline onClick={()=>click()}> Button </Button> */}
                             </CardBody>
                         </Card>
 
