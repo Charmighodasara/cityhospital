@@ -55,7 +55,7 @@ function Login_signup(props) {
                                             <div className="validate" />
                                         </div>
                             }
-                        </div> 
+                        </div>
                         {/* password  */}
                         <div className="row">
                             {forgot === 'true' ?
@@ -77,7 +77,7 @@ function Login_signup(props) {
                             }
 
                         </div>
-                         {/* submit  */}
+                        {/* submit  */}
                         {
                             forgot === 'true' ?
                                 <div className="text-center"><button type="submit">submit</button></div>
