@@ -23,7 +23,7 @@ function List({ data , getid }) {
                                 <CardText> {o.price }</CardText>
 
                                 <CardSubtitle className="mb-2 text-muted" tag="h6"></CardSubtitle>
-                                    <Button onClick={getid}>click here</Button>
+                                    <Button onClick={()=>getid(o.id)}>click here</Button>
                             </CardBody>
                         </Card>
                     )
