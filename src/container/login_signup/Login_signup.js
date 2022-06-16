@@ -37,24 +37,10 @@ function Login_signup(props) {
                         </div>
                         {/* email  */}
                         <div>
-                            {
-                                forgot === 'true' ?
-                                    <div className="col-md-4 form-group mt-3 mt-md-0">
-                                        <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" />
-                                        <div className="validate" />
-                                    </div>
-                                    :
-                                    user === 'login' ?
-                                        <div className="col-md-4 form-group mt-3 mt-md-0">
-                                            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" />
-                                            <div className="validate" />
-                                        </div>
-                                        :
-                                        <div className="col-md-4 form-group mt-3 mt-md-0">
-                                            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" />
-                                            <div className="validate" />
-                                        </div>
-                            }
+                            <div className="col-md-4 form-group mt-3 mt-md-0">
+                                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" />
+                                <div className="validate" />
+                            </div>
                         </div>
                         {/* password  */}
                         <div className="row">
