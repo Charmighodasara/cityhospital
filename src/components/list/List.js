@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap';
 
 
-function List({ data, getid }) {
+function List({ data , getid }) {
     return (
         <div>
             {
@@ -20,10 +20,10 @@ function List({ data, getid }) {
                                         :
                                         null
                                 }
-                                <CardText> {o.price}</CardText>
+                                <CardText> {o.price }</CardText>
 
                                 <CardSubtitle className="mb-2 text-muted" tag="h6"></CardSubtitle>
-                                <Button onClick={getid}>click here</Button>
+                                    <Button onClick={getid}>click here</Button>
                             </CardBody>
                         </Card>
                     )
