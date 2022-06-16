@@ -8,6 +8,7 @@ function List({ data , getid }) {
             {
                 data.map((o, i) => {
                     return (
+                        
                         <Card key={i}>
                             <CardBody>
                                 <CardTitle tag="h5">
