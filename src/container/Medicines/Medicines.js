@@ -39,10 +39,18 @@ function Medicines(props) {
             expiry: 2021
         },
     ]
+
+    const getid = () => {
+        orgData.map((d, i) => {
+            return (
+                console.log(d.id)
+            )
+        })
+    }
+
     return (
         <div>
-           
-            <List  data={orgData} />
+            <List data={orgData} getid={getid} />
         </div>
     );
 }
