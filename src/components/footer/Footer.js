@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer(props) {
     return (
@@ -16,6 +17,9 @@ function Footer(props) {
                                 <strong>Email:</strong> cityhospital@example.com<br />
                             </p>
                         </div>
+                        <div>
+                            <Link to={'/reference'}>Reference form</Link>
+                        </div>
                     </div>
                     <div className="social-links text-center text-md-right pt-3 pt-md-0">
                         <a href="#" className="twitter"><i className="bx bxl-twitter" /></a>
@@ -24,6 +28,7 @@ function Footer(props) {
                         <a href="#" className="google-plus"><i className="bx bxl-skype" /></a>
                         <a href="#" className="linkedin"><i className="bx bxl-linkedin" /></a>
                     </div>
+
                 </div>
             </footer>
 
