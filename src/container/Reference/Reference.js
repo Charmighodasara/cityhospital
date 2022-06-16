@@ -7,7 +7,7 @@ function Reference(props) {
     const handlesubmit = () => {
         console.log(nameRef.current.value , emailRef.current.value);
 
-        // nameRef.current.style.border = '1px solid red';
+        nameRef.current.style.border = '1px solid red';
         nameRef.current.style.backgroundColor = 'pink';
         emailRef.current.focus();
     }
