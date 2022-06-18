@@ -17,7 +17,7 @@ function Login_signup(props) {
             password: '',
             email: '',
         },
-        validationSchema : schema,
+        validationSchema: schema,
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },
@@ -58,10 +58,24 @@ function Login_signup(props) {
                             </div>
                             {/* email  */}
                             <div>
-                                <div className="col-md-4 form-group mt-3 mt-md-0">
-                                    <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" onChange={handleChange} />
-                                    <p>{errors.email}</p>
-                                </div>
+                                {
+                                    forgot === 'true' ?
+                                        <div className="col-md-4 form-group mt-3 mt-md-0">
+                                            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" />
+
+                                        </div>
+                                        :
+                                        user === 'login' ?
+                                            <div className="col-md-4 form-group mt-3 mt-md-0">
+                                                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" onChange={handleChange} />
+                                                <p>{errors.email}</p>
+                                            </div>
+                                            :
+                                            <div className="col-md-4 form-group mt-3 mt-md-0">
+                                                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" />
+                                            </div>
+                                }
+
                             </div>
                             {/* password  */}
                             <div className="row">
@@ -72,6 +86,7 @@ function Login_signup(props) {
                                         <div className="col-md-4 form-group">
                                             <input type="password" name="password" className="form-control" id="password" placeholder="Your password" onChange={handleChange} />
                                             <p>{errors.password}</p>
+                                            
                                             <div>
                                                 <input id="checkbox2" type="checkbox" onClick={() => setForgot('true')} /> <label > Forgot your password ? </label>
                                             </div>
@@ -96,14 +111,14 @@ function Login_signup(props) {
                             <div className="row">
                                 <div className="col-md-4">
                                     {forgot === 'true' ?
-                                        <div className="text-center"><button type="submit" onClick={() => setForgot('false')}> back</button>
+                                        <div className="text-center"><button onClick={() => setForgot('false')}> back</button>
                                         </div>
                                         :
                                         user === 'login' ?
-                                            <div className="text-center">create an new account <button type="submit" onClick={() => setUser('signup')}> signup</button>
+                                            <div className="text-center">create an new account <button onClick={() => setUser('signup')}> signup</button>
                                             </div>
                                             :
-                                            <div className="text-center">already an account <button type="submit" onClick={() => setUser('login')}> login</button>
+                                            <div className="text-center">already an account <button onClick={() => setUser('login')}> login</button>
                                             </div>
                                     }
 
