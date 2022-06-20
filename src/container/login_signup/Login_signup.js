@@ -7,23 +7,41 @@ function Login_signup(props) {
     const [user, setUser] = useState('login')
     const [forgot, setForgot] = useState('flase')
 
-    let schema = yup.object().shape({
-        email: yup.string().required("please enter email.").email("please enter valid email."),
-        password: yup.string().required("please enter password.")
-    });
+    let schemaobj, initialval;
 
-    const formik = useFormik({
-        initialValues: {
+    if (user === 'login') {
+        schemaobj = {
+            email: yup.string().required("please enter email.").email("please enter valid email."),
+            password: yup.string().required("please enter password.")
+        }
+        initialval = {
             password: '',
             email: '',
-        },
+        }
+    } else if (user === 'signup') {
+        schemaobj = {
+            name: yup.string().required("please enter name."),
+            email: yup.string().required("please enter email id.").email("please enter valid email."),
+            password: yup.string().required("please enter password.")
+        }
+        initialval = {
+            name: '',
+            password: '',
+            email: '',
+        }
+    }
+
+    let schema = yup.object().shape(schemaobj);
+
+    const formik = useFormik({
+        initialValues: initialval,
         validationSchema: schema,
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },
     });
 
-    const { handleChange, errors, handleSubmit } = formik;
+    const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
 
     return (
         <main id="main">
@@ -52,7 +70,8 @@ function Login_signup(props) {
                                         null
                                         :
                                         <div className="col-md-4 form-group mt-3 mt-md-0 " >
-                                            <input type="text" className="form-control" name="name" id="name" placeholder="Your name" />
+                                            <input type="text" className="form-control" name="name" id="name" placeholder="Your name" onChange={handleChange} onBlur={handleBlur} />
+                                            <p>{errors.name && touched.name ? errors.name : ''}</p>
                                         </div>
                             }
                             </div>
@@ -61,18 +80,19 @@ function Login_signup(props) {
                                 {
                                     forgot === 'true' ?
                                         <div className="col-md-4 form-group mt-3 mt-md-0">
-                                            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" />
-
+                                            <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" onChange={handleChange} onBlur={handleBlur} />
+                                            <p>{errors.email && touched.email ? errors.email : ''}</p>
                                         </div>
                                         :
                                         user === 'login' ?
                                             <div className="col-md-4 form-group mt-3 mt-md-0">
-                                                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" onChange={handleChange} />
-                                                <p>{errors.email}</p>
+                                                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" onChange={handleChange} onBlur={handleBlur} />
+                                                <p>{errors.email && touched.email ? errors.email : ''}</p>
                                             </div>
                                             :
                                             <div className="col-md-4 form-group mt-3 mt-md-0">
-                                                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" />
+                                                <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" onChange={handleChange} onBlur={handleBlur} />
+                                                <p>{errors.email && touched.email ? errors.email : ''}</p>
                                             </div>
                                 }
 
@@ -84,16 +104,16 @@ function Login_signup(props) {
                                     :
                                     user === 'login' ?
                                         <div className="col-md-4 form-group">
-                                            <input type="password" name="password" className="form-control" id="password" placeholder="Your password" onChange={handleChange} />
-                                            <p>{errors.password}</p>
-                                            
+                                            <input type="password" name="password" className="form-control" id="password" placeholder="Your password" onChange={handleChange} onBlur={handleBlur} />
+                                            <p>{errors.password && touched.password ? errors.password : ''}</p>
                                             <div>
                                                 <input id="checkbox2" type="checkbox" onClick={() => setForgot('true')} /> <label > Forgot your password ? </label>
                                             </div>
                                         </div>
                                         :
                                         <div className="col-md-4 form-group">
-                                            <input type="password" name="password" className="form-control" id="password" placeholder="Your password" />
+                                            <input type="password" name="password" className="form-control" id="password" placeholder="Your password" onChange={handleChange} onBlur={handleBlur} />
+                                            <p>{errors.password && touched.password ? errors.password : ''}</p>
                                         </div>
                                 }
 
