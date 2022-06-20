@@ -8,15 +8,23 @@ function Login_signup(props) {
     const [forgot, setForgot] = useState('flase')
 
     let schemaobj, initialval;
-
-    if (user === 'login') {
+    if (forgot === 'true') {
         schemaobj = {
             email: yup.string().required("please enter email.").email("please enter valid email."),
-            password: yup.string().required("please enter password.")
+        }
+        initialval = {
+            email: '',
+        }
+    } else if (user === 'login') {
+        schemaobj = {
+            email: yup.string().required("please enter email.").email("please enter valid email."),
+            password: yup.string().required("please enter password."),
+            
         }
         initialval = {
             password: '',
             email: '',
+           
         }
     } else if (user === 'signup') {
         schemaobj = {
@@ -29,13 +37,7 @@ function Login_signup(props) {
             password: '',
             email: '',
         }
-    } else if (forgot === 'true') {
-        schemaobj = {
-            email: yup.string().required("please enter email.").email("please enter valid email."),
-        }
-        initialval = {
-            email: '',
-        }
+
     }
 
     let schema = yup.object().shape(schemaobj);
@@ -114,7 +116,7 @@ function Login_signup(props) {
                                             <input type="password" name="password" className="form-control" id="password" placeholder="Your password" onChange={handleChange} onBlur={handleBlur} />
                                             <p>{errors.password && touched.password ? errors.password : ''}</p>
                                             <div>
-                                                <input id="checkbox2" type="checkbox" onClick={() => setForgot('true')} onChange={handleChange} onBlur={handleBlur}/> <label > Forgot your password ? </label>
+                                                <input  type="checkbox" onClick={() => setForgot('true')} onChange={handleChange} onBlur={handleBlur} /> <label > Forgot your password ? </label>
                                             </div>
                                         </div>
                                         :
@@ -138,14 +140,14 @@ function Login_signup(props) {
                             <div className="row">
                                 <div className="col-md-4">
                                     {forgot === 'true' ?
-                                        <div className="text-center"><button onClick={() => setForgot('false')}> back</button>
+                                        <div className="text-center">Go back to login / signup<a onClick={() => setForgot('false')}> Back</a>
                                         </div>
                                         :
                                         user === 'login' ?
-                                            <div className="text-center">create an new account <button onClick={() => setUser('signup')}> signup</button>
+                                            <div className="text-center">create an new account <a onClick={() => setUser('signup')}> Signup</a>
                                             </div>
                                             :
-                                            <div className="text-center">already an account <button onClick={() => setUser('login')}> login</button>
+                                            <div className="text-center">already an account <a onClick={() => setUser('login')}> Login</a>
                                             </div>
                                     }
 
