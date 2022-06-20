@@ -29,6 +29,13 @@ function Login_signup(props) {
             password: '',
             email: '',
         }
+    } else if (forgot === 'true') {
+        schemaobj = {
+            email: yup.string().required("please enter email.").email("please enter valid email."),
+        }
+        initialval = {
+            email: '',
+        }
     }
 
     let schema = yup.object().shape(schemaobj);
@@ -107,7 +114,7 @@ function Login_signup(props) {
                                             <input type="password" name="password" className="form-control" id="password" placeholder="Your password" onChange={handleChange} onBlur={handleBlur} />
                                             <p>{errors.password && touched.password ? errors.password : ''}</p>
                                             <div>
-                                                <input id="checkbox2" type="checkbox" onClick={() => setForgot('true')} /> <label > Forgot your password ? </label>
+                                                <input id="checkbox2" type="checkbox" onClick={() => setForgot('true')} onChange={handleChange} onBlur={handleBlur}/> <label > Forgot your password ? </label>
                                             </div>
                                         </div>
                                         :
