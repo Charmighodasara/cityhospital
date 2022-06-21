@@ -48,6 +48,7 @@ function Login_signup(props) {
         onSubmit: values => {
             alert(JSON.stringify(values, null, 2));
         },
+        enableReinitialize : true,
     });
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
