@@ -11,7 +11,7 @@ function Appointment(props) {
     department: yup.string().required('please select department.')
   });
 
-  const formik = useFormik({
+  const formikApp = useFormik({
     initialValues: {
       name: '',
       email: '',
@@ -25,7 +25,7 @@ function Appointment(props) {
     },
   });
 
-  const { handleChange, errors, handleSubmit,touched, handleBlur } = formik;
+  const { handleChange, errors, handleSubmit, touched, handleBlur } = formikApp;
   return (
     <main id="main">
       <section id="appointment" className="appointment">
@@ -37,29 +37,29 @@ function Appointment(props) {
               Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
           </div>
 
-          <Formik values={formik}>
+          <Formik values={formikApp}>
             <Form action method="post" role="form" className="php-email-form" onSubmit={handleSubmit}>
               <div className="row">
                 {/* name  */}
                 <div className="col-md-4 form-group">
-                  <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" onChange={handleChange} onBlur={handleBlur}/>
+                  <input type="text" name="name" className="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" onChange={handleChange} onBlur={handleBlur} />
                   <p>{errors.name && touched.name ? errors.name : ''}</p>
                 </div>
                 {/* email  */}
                 <div className="col-md-4 form-group mt-3 mt-md-0">
-                  <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email"  onChange={handleChange} onBlur={handleBlur} />
+                  <input type="email" className="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" onChange={handleChange} onBlur={handleBlur} />
                   <p>{errors.email && touched.email ? errors.email : ''}</p>
                 </div>
                 {/* phone  */}
                 <div className="col-md-4 form-group mt-3 mt-md-0">
-                  <input type="tel" className="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" maxlength="10"  onChange={handleChange} onBlur={handleBlur} />
+                  <input type="tel" className="form-control" name="phone" id="phone" placeholder="Your Phone" data-rule="minlen:4" data-msg="Please enter at least 4 chars" maxlength="10" onChange={handleChange} onBlur={handleBlur} />
                   <p>{errors.phone && touched.phone ? errors.phone : ''}</p>
                 </div>
               </div>
               {/* Appointment Date  */}
               <div className="row">
                 <div className="col-md-4 form-group mt-3">
-                  <input type="datetime" name="date" className="form-control datepicker" id="date" placeholder="Appointment Date"  onChange={handleChange} onBlur={handleBlur} />
+                  <input type="datetime" name="date" className="form-control datepicker" id="date" placeholder="Appointment Date" onChange={handleChange} onBlur={handleBlur} />
                   <p>{errors.date && touched.date ? errors.date : ''}</p>
                 </div>
                 {/* department  */}
