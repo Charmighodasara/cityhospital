@@ -37,7 +37,6 @@ function Login_signup(props) {
             password: '',
             email: '',
         }
-
     }
 
     let schema = yup.object().shape(schemaobj);
