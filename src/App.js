@@ -8,6 +8,7 @@ import Contact from "./container/Contact/Contact";
 import Departments from "./container/Departments/Departments";
 import Doctors from "./container/Doctors/Doctors";
 import Home from "./container/home/Home";
+import List_appointment from "./container/list-appointment/List_appointment";
 import Login_signup from "./container/login_signup/Login_signup";
 import Medicines from "./container/Medicines/Medicines";
 import Reference from "./container/Reference/Reference";
@@ -26,6 +27,7 @@ function App() {
         <Route path={'/login_signin'} exact component={Login_signup}></Route>
         <Route path={'/medicines'} exact component={Medicines}></Route>
         <Route path={'/reference'} exact component={Reference}></Route>
+        <Route path={'/list_appointment'} exact component={List_appointment}></Route>
       </Switch>
       <Footer />
     </div>
