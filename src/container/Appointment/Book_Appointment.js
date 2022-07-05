@@ -32,9 +32,6 @@ function Book_Appointment(props) {
         <div className="container">
           <div className="section-title">
             <h2>Make an Appointment</h2>
-            <p>Aenean enim orci, suscipit vitae sodales ac, semper in ex. Nunc aliquam eget nibh eu euismod. Donec dapibus
-              blandit quam volutpat sollicitudin. Fusce tincidunt sit amet ex in volutpat. Donec lacinia finibus tortor.
-              Curabitur luctus eleifend odio. Phasellus placerat mi et suscipit pulvinar.</p>
           </div>
 
           <Formik values={formikApp}>
