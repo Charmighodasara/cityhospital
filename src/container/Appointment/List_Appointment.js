@@ -1,7 +1,7 @@
 import React from "react";
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
-function List_appointment(props) {
+function List_Appointment(props) {
 
     let schema = yup.object().shape({
         name: yup.string().required("please enter your name."),
@@ -88,7 +88,7 @@ function List_appointment(props) {
         </div>
     );
 }
-export default List_appointment;
+export default List_Appointment;
 
 
 

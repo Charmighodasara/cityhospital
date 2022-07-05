@@ -2,7 +2,7 @@ import React from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 
-function Appointment(props) {
+function Book_Appointment(props) {
   let schema = yup.object().shape({
     name: yup.string().required("please enter name."),
     email: yup.string().required("please enter email id.").email("please enter valid email."),
@@ -95,4 +95,4 @@ function Appointment(props) {
   );
 }
 
-export default Appointment;
+export default Book_Appointment;
