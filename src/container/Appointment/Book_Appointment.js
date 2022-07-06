@@ -4,7 +4,7 @@ import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Book_Appointment(props) {
-  
+
   const history = useHistory()
 
   let handleInsert = (values) => {
@@ -16,9 +16,9 @@ function Book_Appointment(props) {
     }
     console.log([data]);
     let localData = JSON.parse(localStorage.getItem("bookApt"))
-    if (localData === null){
+    if (localData === null) {
       localStorage.setItem("bookApt", JSON.stringify([data]))
-    }else{
+    } else {
       localData.push(data)
       localStorage.setItem("bookApt", JSON.stringify(localData))
     }
@@ -33,7 +33,7 @@ function Book_Appointment(props) {
     message: yup.string().required('please enter message.')
   });
 
-  const formikApp = useFormik({
+  const formikApt = useFormik({
     initialValues: {
       name: '',
       email: '',
@@ -51,7 +51,7 @@ function Book_Appointment(props) {
     enableReinitialize: true,
   });
 
-  const { handleChange, errors, handleSubmit, touched, handleBlur } = formikApp;
+  const { handleChange, errors, handleSubmit, touched, handleBlur } = formikApt;
   return (
     <main id="main">
       <section id="appointment" className="appointment">
@@ -68,7 +68,7 @@ function Book_Appointment(props) {
             </div>
           </div>
 
-          <Formik values={formikApp}>
+          <Formik values={formikApt}>
             <Form className="php-email-form" onSubmit={handleSubmit}>
               <div className="row">
                 {/* name  */}
