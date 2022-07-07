@@ -25,7 +25,7 @@ function List_Appointment(props) {
     }
     const handleEdit = (id)=>{
         history.push('/appointment' , {id:id}) 
-        console.log(id);
+        // console.log(id);
     }
     return (
         <div>

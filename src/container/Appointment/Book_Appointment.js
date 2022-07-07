@@ -1,11 +1,16 @@
 import React from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useLocation } from 'react-router-dom';
 
 function Book_Appointment(props) {
 
   const history = useHistory()
+  const location = useLocation();
+
+  const myparam =location.state.id
+  console.log(myparam);
+
 
   let handleInsert = (values) => {
     console.log(values);
@@ -47,6 +52,7 @@ function Book_Appointment(props) {
       // alert(JSON.stringify(values, null, 2));
       handleInsert(values)
       history.push('/list_appointment')
+      // console.log(props.location.this.state.id);
     },
     enableReinitialize: true,
   });
