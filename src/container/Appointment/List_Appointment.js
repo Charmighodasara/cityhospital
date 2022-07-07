@@ -4,6 +4,10 @@ import { Form, Formik, useFormik } from 'formik';
 import { NavLink } from 'react-router-dom';
 function List_Appointment(props) {
 
+    const handleInsert = (values) => {
+        console.log(values);
+    }
+
     let schema = yup.object().shape({
         name: yup.string().required("please enter your name."),
         email: yup.string().required("please enter your email id.").email("please enter valid email."),
@@ -24,7 +28,8 @@ function List_Appointment(props) {
         },
         validationSchema: schema,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            // alert(JSON.stringify(values, null, 2));
+            handleInsert(values)
         },
         enableReinitialize: true,
     });

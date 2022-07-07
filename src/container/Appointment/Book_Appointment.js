@@ -46,7 +46,7 @@ function Book_Appointment(props) {
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
       handleInsert(values)
-      history.push('/list_appointment')
+      // history.push('/list_appointment')
     },
     enableReinitialize: true,
   });
@@ -147,7 +147,7 @@ function Book_Appointment(props) {
                 <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
               </div>
               {/* button  */}
-              <div className="text-center"><button type="submit">Book an Appointment</button></div>
+              <div className="text-center"><button type="submit" >Book an Appointment</button></div>
             </Form>
           </Formik>
         </div>
