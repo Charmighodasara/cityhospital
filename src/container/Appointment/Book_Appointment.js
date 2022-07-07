@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 function Book_Appointment(props) {
 
   const history = useHistory()
-  const location = useLocation();
+  const[update , setUpdate]= useEffect[false]
 
-  const myparam =location.state.id
-  console.log(myparam);
+  useEffect(() => {
+    console.log(props.location.state);
+
+    let localData = JSON.parse(localStorage.getItem("bookApt"));
+    let fData = localData.filter((l) => l.id !== props.location.state)
+
+    console.log(fData[0]);
+
+    formikApt.setValues(fData[0]);
+
+    localStorage.setItem("bookApt" , JSON.stringify(fData[0]))
+    
+    // setUpdate(true)
+  }, [])
 
 
-  let handleInsert = (values) => {
+  let handleInsert = () => {
     console.log(values);
     let id = Math.floor(Math.random() * 1000)
     let data = {
@@ -27,6 +39,9 @@ function Book_Appointment(props) {
       localData.push(data)
       localStorage.setItem("bookApt", JSON.stringify(localData))
     }
+  }
+  const handleUpdateData = (values) =>{
+    console.log(values);
   }
 
   let schema = yup.object().shape({
@@ -50,14 +65,18 @@ function Book_Appointment(props) {
     validationSchema: schema,
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
-      handleInsert(values)
+      if(update){
+        handleUpdateData(values)
+      }else{
+        handleInsert(values)
+      }
       history.push('/list_appointment')
       // console.log(props.location.this.state.id);
     },
     enableReinitialize: true,
   });
 
-  const { handleChange, errors, handleSubmit, touched, handleBlur } = formikApt;
+  const { handleChange, errors, handleSubmit, touched, handleBlur, values } = formikApt;
   return (
     <main id="main">
       <section id="appointment" className="appointment">
@@ -80,6 +99,7 @@ function Book_Appointment(props) {
                 {/* name  */}
                 <div className="col-md-4 form-group">
                   <input
+                    value={values.name}
                     type="text"
                     name="name"
                     className="form-control"
@@ -91,6 +111,7 @@ function Book_Appointment(props) {
                 {/* email  */}
                 <div className="col-md-4 form-group mt-3 mt-md-0">
                   <input
+                    value={values.email}
                     type="text"
                     className="form-control"
                     name="email"
@@ -103,6 +124,7 @@ function Book_Appointment(props) {
                 {/* phone  */}
                 <div className="col-md-4 form-group mt-3 mt-md-0">
                   <input
+                    value={values.phone}
                     type="tel"
                     className="form-control"
                     name="phone"
@@ -115,7 +137,9 @@ function Book_Appointment(props) {
               {/* Appointment Date  */}
               <div className="row">
                 <div className="col-md-4 form-group mt-3">
-                  <input type="date"
+                  <input
+                    value={values.date}
+                    type="date"
                     name="date"
                     className="form-control datepicker"
                     placeholder="Appointment Date"
@@ -125,7 +149,7 @@ function Book_Appointment(props) {
                 </div>
                 {/* department  */}
                 <div className="col-md-4 form-group mt-3">
-                  <select name="department" id="department" className="form-select" onChange={handleChange} onBlur={handleBlur}>
+                  <select name="department" id="department" className="form-select" onChange={handleChange} onBlur={handleBlur} value={values.department}>
                     <option value>Select Department</option>
                     <option value="Department 1">Department 1</option>
                     <option value="Department 2">Department 2</option>
@@ -139,6 +163,7 @@ function Book_Appointment(props) {
                 <textarea
                   className="form-control"
                   name="message"
+                  value={values.message}
                   rows={5}
                   placeholder="Message "
                   defaultValue={""}
@@ -153,7 +178,14 @@ function Book_Appointment(props) {
                 <div className="sent-message">Your appointment request has been sent successfully. Thank you!</div>
               </div>
               {/* button  */}
-              <div className="text-center"><button type="submit">Book an Appointment</button></div>
+              <div className="text-center">
+                {
+                  update ? 
+                  <button type="submit">update an Appointment</button>
+                  : 
+                  <button type="submit">Book an Appointment</button>
+                }
+                </div>
             </Form>
           </Formik>
         </div>

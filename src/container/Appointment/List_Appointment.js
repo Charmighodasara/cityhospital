@@ -7,7 +7,9 @@ function List_Appointment(props) {
 
     let getData = () => {
         let localData = JSON.parse(localStorage.getItem("bookApt"))
-        setData(localData)
+        if(localData !== null){
+            setData(localData)
+        }
     }
     useEffect(() => {
         getData()
@@ -25,7 +27,7 @@ function List_Appointment(props) {
     }
     const handleEdit = (id)=>{
         history.push('/appointment' , {id:id}) 
-        // console.log(id);
+        console.log(id);
     }
     return (
         <div>
