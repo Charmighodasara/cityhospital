@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
@@ -6,22 +6,20 @@ import { NavLink, useHistory } from 'react-router-dom';
 function Book_Appointment(props) {
 
   const history = useHistory()
-  const[update , setUpdate]= useEffect(false)
+  // useEffect(() => {
+  //   console.log(props.location.state.id);
 
-  useEffect(() => {
-    console.log(props.location.state);
+    // let localData = JSON.parse(localStorage.getItem("bookApt"));
 
-    let localData = JSON.parse(localStorage.getItem("bookApt"));
-    let fData = localData.filter((l) => l.id !== props.location.state)
+    // let fData = localData.filter((l) => l.id !== props.location.state)
 
-    console.log(fData[0]);
+    // console.log(fData[0]);
 
-    formikApt.setValues(fData[0]);
+    // formikApt.setValues(fData[0]);
 
-    localStorage.setItem("bookApt" , JSON.stringify(fData[0]))
+    // localStorage.setItem("bookApt" , JSON.stringify(fData[0]))
     
-    setUpdate(true)
-  }, [])
+  // }, [])
 
 
   let handleInsert = () => {
@@ -65,11 +63,7 @@ function Book_Appointment(props) {
     validationSchema: schema,
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
-      if(update){
-        handleUpdateData(values)
-      }else{
         handleInsert(values)
-      }
       history.push('/list_appointment')
     },
     enableReinitialize: true,
@@ -178,12 +172,10 @@ function Book_Appointment(props) {
               </div>
               {/* button  */}
               <div className="text-center">
-                {
-                  update ? 
-                  <button type="submit">update an Appointment</button>
-                  : 
+               
+                  {/* <button type="submit">update an Appointment</button> */}
+                 
                   <button type="submit">Book an Appointment</button>
-                }
                 </div>
             </Form>
           </Formik>
