@@ -1,17 +1,12 @@
 import React from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 function Book_Appointment(props) {
 
   const history = useHistory()
-  const location = useLocation();
-
-  const myparam =location.state.id
-  console.log(myparam);
-
-
+  
   let handleInsert = (values) => {
     console.log(values);
     let id = Math.floor(Math.random() * 1000)
