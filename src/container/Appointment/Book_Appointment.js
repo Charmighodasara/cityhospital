@@ -6,7 +6,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 function Book_Appointment(props) {
 
   const history = useHistory()
-  const[update , setUpdate]= useEffect[false]
+  const[update , setUpdate]= useEffect(false)
 
   useEffect(() => {
     console.log(props.location.state);
@@ -20,7 +20,7 @@ function Book_Appointment(props) {
 
     localStorage.setItem("bookApt" , JSON.stringify(fData[0]))
     
-    // setUpdate(true)
+    setUpdate(true)
   }, [])
 
 
@@ -71,7 +71,6 @@ function Book_Appointment(props) {
         handleInsert(values)
       }
       history.push('/list_appointment')
-      // console.log(props.location.this.state.id);
     },
     enableReinitialize: true,
   });
