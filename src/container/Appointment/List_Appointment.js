@@ -29,6 +29,7 @@ function List_Appointment(props) {
         history.push('/appointment' , {id:id}) 
         console.log(id);
     }
+  
     return (
         <div>
             <main id="main">
@@ -53,12 +54,18 @@ function List_Appointment(props) {
                                             <CardTitle tag="h5">
                                                 {d.name}
                                             </CardTitle>
-                                            <CardSubtitle
-                                                className="mb-2 text-muted"
-                                                tag="h6"
-                                            >
+                                            <CardSubtitle className="mb-2 text-muted" tag="h6" >
                                                 {d.date}
                                             </CardSubtitle>
+                                            {/* <CardSubtitle className="mb-2 text-muted" tag="h6" >
+                                                {d.email}
+                                            </CardSubtitle>
+                                            <CardSubtitle className="mb-2 text-muted" tag="h6" >
+                                                {d.phone}
+                                            </CardSubtitle>
+                                            <CardSubtitle className="mb-2 text-muted" tag="h6" >
+                                                {d.department}
+                                            </CardSubtitle> */}
                                             <Button onClick={()=>handleEdit(d.id)}> Edit </Button>
                                             <Button onClick={() => handleDelete(d.id)}> Delete </Button>
                                         </CardBody>

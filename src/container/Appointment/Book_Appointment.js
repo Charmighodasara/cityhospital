@@ -4,32 +4,29 @@ import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
 
 function Book_Appointment(props) {
-
+  const [update, setUpdate] = useState(false)
   const history = useHistory()
-  // useEffect(() => {
-  //   console.log(props.location.state.id);
 
-    // let localData = JSON.parse(localStorage.getItem("bookApt"));
-
-    // let fData = localData.filter((l) => l.id !== props.location.state)
-
-    // console.log(fData[0]);
-
-    // formikApt.setValues(fData[0]);
-
-    // localStorage.setItem("bookApt" , JSON.stringify(fData[0]))
-    
-  // }, [])
-
+  useEffect(() => {
+    // console.log(props.location.state.id);
+    let localData = JSON.parse(localStorage.getItem("bookApt"))
+    if (props.location.state && localData !== null) {
+      let fData = localData.filter((l) => l.id === props.location.state.id)
+      console.log(fData[0]);
+      formikApt.setValues(fData[0])
+      setUpdate(true)
+    }
+  }, [])
 
   let handleInsert = () => {
-    console.log(values);
+    // console.log(values);
     let id = Math.floor(Math.random() * 1000)
     let data = {
       id: id,
       ...values
     }
-    console.log([data]);
+    // console.log([data]);
+
     let localData = JSON.parse(localStorage.getItem("bookApt"))
     if (localData === null) {
       localStorage.setItem("bookApt", JSON.stringify([data]))
@@ -37,9 +34,6 @@ function Book_Appointment(props) {
       localData.push(data)
       localStorage.setItem("bookApt", JSON.stringify(localData))
     }
-  }
-  const handleUpdateData = (values) =>{
-    console.log(values);
   }
 
   let schema = yup.object().shape({
@@ -51,6 +45,24 @@ function Book_Appointment(props) {
     message: yup.string().required('please enter message.')
   });
 
+  const handleUpdateData = (values) => {
+    console.log(values);
+    let localData = JSON.parse(localStorage.getItem("bookApt"))
+
+    let uData = localData.map((u) => {
+      if (u.id === values.id) {
+        return values;
+      } else {
+        return u;
+      }
+    })
+    console.log(uData);
+    localStorage.setItem("bookApt", JSON.stringify(uData))
+    history.replace()
+    history.push('/list_appointment')
+    formikApt.resetForm()
+    setUpdate(false)
+  }
   const formikApt = useFormik({
     initialValues: {
       name: '',
@@ -63,7 +75,11 @@ function Book_Appointment(props) {
     validationSchema: schema,
     onSubmit: values => {
       // alert(JSON.stringify(values, null, 2));
+      if (update) {
+        handleUpdateData(values)
+      } else {
         handleInsert(values)
+      }
       history.push('/list_appointment')
     },
     enableReinitialize: true,
@@ -172,11 +188,13 @@ function Book_Appointment(props) {
               </div>
               {/* button  */}
               <div className="text-center">
-               
-                  {/* <button type="submit">update an Appointment</button> */}
-                 
-                  <button type="submit">Book an Appointment</button>
-                </div>
+                {
+                  update ? <button type="submit">update an Appointment</button>
+                    : <button type="submit">Book an Appointment</button>
+                }
+
+
+              </div>
             </Form>
           </Formik>
         </div>
