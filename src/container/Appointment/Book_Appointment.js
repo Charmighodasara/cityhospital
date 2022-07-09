@@ -34,6 +34,7 @@ function Book_Appointment(props) {
       localData.push(data)
       localStorage.setItem("bookApt", JSON.stringify(localData))
     }
+    history.push('/list_appointment')
   }
 
   let schema = yup.object().shape({
@@ -80,7 +81,7 @@ function Book_Appointment(props) {
       } else {
         handleInsert(values)
       }
-      history.push('/list_appointment')
+ 
     },
     enableReinitialize: true,
   });
