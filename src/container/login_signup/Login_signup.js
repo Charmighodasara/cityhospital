@@ -19,12 +19,12 @@ function Login_signup(props) {
         schemaobj = {
             email: yup.string().required("please enter email.").email("please enter valid email."),
             password: yup.string().required("please enter password."),
-            
+
         }
         initialval = {
             password: '',
             email: '',
-           
+
         }
     } else if (user === 'signup') {
         schemaobj = {
@@ -41,13 +41,36 @@ function Login_signup(props) {
 
     let schema = yup.object().shape(schemaobj);
 
+    const handledata = (values) => {
+        let localdata = JSON.parse(localStorage.getItem("user"))
+        // localdata.push(values)
+        // localStorage.setItem("user", JSON.stringify(localdata))
+
+        if (localdata === null) {
+            localStorage.setItem("user", JSON.stringify([values]))
+        } else {
+            localdata.push(values)
+            localStorage.setItem("user", JSON.stringify(localdata))
+        }
+        console.log(values);
+
+    }
+
+    const handleLogin = () => {
+        localStorage.setItem("user", "123456")
+    }
+
     const formik = useFormik({
         initialValues: initialval,
         validationSchema: schema,
         onSubmit: values => {
-            alert(JSON.stringify(values, null, 2));
+            if (user === 'login') {
+                handleLogin()
+            } else {
+                handledata(values)
+            }
         },
-        enableReinitialize : true,
+        enableReinitialize: true,
     });
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
@@ -116,7 +139,7 @@ function Login_signup(props) {
                                             <input type="password" name="password" className="form-control" id="password" placeholder="Your password" onChange={handleChange} onBlur={handleBlur} />
                                             <p>{errors.password && touched.password ? errors.password : ''}</p>
                                             <div>
-                                                <input  type="checkbox" onClick={() => setForgot('true')} onChange={handleChange} onBlur={handleBlur} /> <label > Forgot your password ? </label>
+                                                <input type="checkbox" onClick={() => setForgot('true')} onChange={handleChange} onBlur={handleBlur} /> <label > Forgot your password ? </label>
                                             </div>
                                         </div>
                                         :
