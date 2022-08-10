@@ -1760,3 +1760,13 @@ section {
     color: #FF6337 !important;
     cursor: pointer;
 }
+
+.light {
+  background-color: #fff !important;
+  color: black !important;
+}
+
+.dark {
+  background-color: black !important;
+  color: #fff !important;
+}
