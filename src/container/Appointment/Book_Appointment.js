@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 import { NavLink, useHistory } from 'react-router-dom';
+import { themeContext } from '../../context/ThemeContext';
 
 function Book_Appointment(props) {
   const [update, setUpdate] = useState(false)
@@ -87,9 +88,11 @@ function Book_Appointment(props) {
   });
 
   const { handleChange, errors, handleSubmit, touched, handleBlur, values } = formikApt;
+  const value = useContext(themeContext);
+
   return (
-    <main id="main">
-      <section id="appointment" className="appointment">
+    <main id="main" >
+      <section id="appointment"  className={` appointment ${value.theme}`}>
         <div className="container">
           <div className="section-title">
             <h2>Book An Appointment</h2>

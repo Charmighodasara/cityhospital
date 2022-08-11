@@ -1,8 +1,10 @@
-import React from 'react';
+    import React, { useContext } from 'react';
+import { themeContext } from '../../context/ThemeContext';
 
 function Home(props) {
+    const value = useContext(themeContext);
     return (
-        <div>
+        <div className={` ${value.theme}`}>
             <div>
                 <section id="hero" className="d-flex align-items-center">
                     <div className="container">
@@ -10,13 +12,13 @@ function Home(props) {
                         <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
                     </div>
                 </section>
-                <main id="main">
+                <main id="main" className={` ${value.theme}`}>
                     <section id="why-us" className="why-us">
                     </section>
                     <section id="counts" className="counts">
                         <div className="container">
                             <div className="row">
-                                <div className="col-lg-3 col-md-6">
+                                <div className={`col-lg-3 col-md-6${value.theme}`}>
                                     <div className="count-box">
                                         <i className="fas fa-user-md" />
                                         <span>23</span>

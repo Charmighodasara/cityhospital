@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useHistory } from 'react-router-dom';
 import { Button, Card, CardBody, CardSubtitle, CardText, CardTitle } from "reactstrap";
+import { themeContext } from "../../context/ThemeContext";
 function List_Appointment(props) {
     const [data, setData] = useState([]);
     const history = useHistory()
@@ -30,10 +31,11 @@ function List_Appointment(props) {
         console.log(id);
     }
   
+    const value = useContext(themeContext);
     return (
         <div>
             <main id="main">
-                <section id="appointment" className="appointment">
+                <section id="appointment"  className={` appointment ${value.theme}`}>
                     <div className="container">
                         <div className="section-title">
                             <h2>List An Appointment</h2>

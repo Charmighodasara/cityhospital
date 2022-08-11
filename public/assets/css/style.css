@@ -121,7 +121,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.3s;
 }
 
-#topbar .contact-info a:hover {
+#topbar .contact-info a:hover , .dark#topbar .contact-info a:hover{
   color: #FF6337;
 }
 
@@ -270,7 +270,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 5px;
 }
 
-.navbar a:hover, .navbar .active, .navbar li:hover > a {
+.navbar a:hover, .navbar .active, .navbar li:hover > a , .dark .navbar a:hover, .navbar .active, .navbar li:hover > a {
   color: #FF6337;
   border-color: #FF6337;
 }
@@ -1076,9 +1076,9 @@ section {
   box-shadow: 0px 0px 8px 0px #FF6337 ;
 }
 
-.appointment .php-email-form input, .appointment .php-email-form select {
+/* .appointment .php-email-form input, .appointment .php-email-form select {   */
   /* height: 44px; */
-}
+/* } */
 
 .appointment .php-email-form textarea {
   padding: 10px 12px;
@@ -1763,10 +1763,33 @@ section {
 
 .light {
   background-color: #fff !important;
-  color: black !important;
+  color: #111 !important;
 }
 
 .dark {
-  background-color: black !important;
+  background-color: #111 !important;
   color: #fff !important;
+}
+.dark#topbar .contact-info a {
+  color: #ffffff;
+}
+
+.dark .navbar a , .dark .nav-link{
+  color: #ffffff !important;
+  border-bottom: 2px solid rgb(71, 40, 40);
+}
+.dark .navbar a:hover, .dark .navbar .active, .dark .navbar li:hover > a, .dark .navbar a:hover,.dark .navbar .active,.dark .navbar li:hover > a {
+  color: #FF6337 !important;
+}
+.dark .testimonials .testimonial-item p{
+  color: #111 !important;
+}
+.dark .counts{
+    background: #111;
+}
+.dark.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+  background-color: #ffffff00;
+}
+.dark.contact .php-email-form , .dark.contact .info{
+  background: #111;
 }

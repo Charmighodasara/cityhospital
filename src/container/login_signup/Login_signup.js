@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
+import { themeContext } from '../../context/ThemeContext';
 
 
 function Login_signup(props) {
@@ -74,10 +75,10 @@ function Login_signup(props) {
     });
 
     const { handleChange, errors, handleSubmit, touched, handleBlur } = formik;
-
+    const value = useContext(themeContext);
     return (
         <main id="main">
-            <section id="appointment" className="appointment">
+            <section id="appointment" className={` appointment ${value.theme}`}>
                 <div className="container">
                     {/* heading  */}
                     <div className="section-title">
