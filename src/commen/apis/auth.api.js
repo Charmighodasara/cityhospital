@@ -1,5 +1,5 @@
 
 
-export const signUpApi = () =>{
-
+export const signUpApi = (data) =>{
+    console.log("signUpApi" , data);
 }

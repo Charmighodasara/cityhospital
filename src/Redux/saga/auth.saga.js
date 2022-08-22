@@ -1,5 +1,6 @@
 import { call, put, takeEvery, takeLatest, all } from 'redux-saga/effects'
 import { signUpApi } from '../../commen/apis/auth.api';
+import * as ActionTypes from '../ActionTypes'
 
 function* signUp(action) {
     try {
