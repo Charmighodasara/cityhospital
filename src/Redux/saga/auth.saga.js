@@ -1,5 +1,5 @@
 import { call, put, takeEvery, takeLatest, all } from 'redux-saga/effects'
-import { signUpApi } from '../commen/apis/auth.api';
+import { signUpApi } from '../../commen/apis/auth.api';
 
 function* signUp(action) {
     try {
