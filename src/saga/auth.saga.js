@@ -14,7 +14,7 @@ export function* watchSignUp() {
     yield takeEvery(ActionTypes.SIGNUP_USER, signUp);
 }
 
-export function* signUpSaga() {
+export function* authSaga() {
     yield all([
         watchSignUp()
     ])
