@@ -5,6 +5,6 @@ import { signUpSaga } from './auth.saga'
 
 export function* rootSaga() {
     yield all([
-        signUpSaga
+        signUpSaga()
     ])
 }
