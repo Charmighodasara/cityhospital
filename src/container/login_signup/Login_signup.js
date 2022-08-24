@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 import { themeContext } from '../../context/ThemeContext';
 import { useDispatch } from 'react-redux';
-import { singUpAction } from '../../Redux/Action/auth.action';
+import { signInAction, singUpAction } from '../../Redux/Action/auth.action';
 
 
 function Login_signup(props) {
@@ -63,8 +63,11 @@ function Login_signup(props) {
 
     }
 
-    const handleLogin = () => {
-        localStorage.setItem("user", "123456")
+    const handleLogin = (values) => {
+        // localStorage.setItem("user", "123456")
+        dispatch(signInAction(values))
+        // console.log(values);
+
     }
 
     const formik = useFormik({
@@ -72,7 +75,7 @@ function Login_signup(props) {
         validationSchema: schema,
         onSubmit: values => {
             if (user === 'login') {
-                handleLogin()
+                handleLogin(values)
             } else {
                 handledata(values)
             }
