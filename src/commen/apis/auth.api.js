@@ -31,7 +31,7 @@ export const signUpApi = (data) => {
                 if (errorCode.localeCompare("auth/email-already-in-use") === 0) {
                     reject({ payload: "email allready verified" });
                 } else {
-                    reject({ payload: error });
+                    reject({ payload: errorCode });
                 }
             });
     })
