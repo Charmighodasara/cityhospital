@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { themeReducer } from '../../context/Reducer/ThemeReducer';
 import ToggleContext, { themeContext } from '../../context/ThemeContext';
+import Alert from '../Alert/Alert';
 
 function Header(props) {
     const value = useContext(themeContext);
@@ -22,6 +23,7 @@ function Header(props) {
                             <a href="#" className="instagram"><i className="bi bi-instagram" /></a>
                             <a href="#" className="linkedin"><i className="bi bi-linkedin" /></a>
                         </div>
+                        <Alert />
                     </div>
                 </div>
                 <header id="header" className={`fixed-top ${value.theme}`}>

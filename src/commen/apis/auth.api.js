@@ -45,16 +45,16 @@ export const signInApi = (data) => {
                 const user = userCredential.user;
                 console.log(user);
                 if (user.emailVerified) {
-                    console.log("signIn succesfull");
+                    resolve({ payload: "signIn succesfull" });
                 } else {
-                    console.log("please varify your email.");
+                    resolve({ payload: "please varify your email." });
                 }
             })
             .catch((error) => {
 
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                
+
                 if (errorCode.localeCompare("auth/wrong-password") === 0) {
                     reject({ payload: " password was wrong." });
                 } else if (errorCode.localeCompare("auth/user-not-found") === 0) {
