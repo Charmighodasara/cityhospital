@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useSnackbar } from 'notistack';
+import { resetAlert } from '../../Redux/Action/Alert.action';
 
 function Alert(props) {
 
@@ -8,6 +9,7 @@ function Alert(props) {
     console.log(alert);
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
+    const dispatch = useDispatch()
     useEffect(() => {
 
         if (alert.text !== '') {
@@ -21,6 +23,8 @@ function Alert(props) {
                 })
         }
     }, [alert.text])
+
+    setTimeout(() => {dispatch(resetAlert())}, 2000);
 
     return (
         <div>
