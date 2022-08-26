@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { themeReducer } from '../../context/Reducer/ThemeReducer';
 import ToggleContext, { themeContext } from '../../context/ThemeContext';
+import { SignOutAction } from '../../Redux/Action/auth.action';
 import Alert from '../Alert/Alert';
 
 function Header(props) {
     const value = useContext(themeContext);
     console.log(value);
+
+    const dispatch = useDispatch()
     return (
         <div>
             <div className="main-header">
@@ -17,7 +21,7 @@ function Header(props) {
                             <i className="bi bi-phone" /> +91 9988776655
                         </div>
                         <div className="d-none d-lg-flex social-links align-items-center">
-                        <button onClick={()=>value.toggletheme(value.theme)} >THEME TOGGLE</button>
+                            <button onClick={() => value.toggletheme(value.theme)} >THEME TOGGLE</button>
                             <a href="#" className="twitter"><i className="bi bi-twitter" /></a>
                             <a href="#" className="facebook"><i className="bi bi-facebook" /></a>
                             <a href="#" className="instagram"><i className="bi bi-instagram" /></a>
@@ -32,7 +36,7 @@ function Header(props) {
                             <NavLink to={'/'}>
                                 <h1 className="logo me-auto">City</h1><br />
                                 <h2 className="logo-tiny-text me-auto">Multispeciality Hospital</h2>
-                           </NavLink>
+                            </NavLink>
                         </div>
                         <nav id="navbar" className="navbar order-last order-lg-0">
                             <ul>
@@ -54,14 +58,19 @@ function Header(props) {
                                 <li>
                                     <NavLink className="nav-link scrollto" to={'/contact'}>Contact</NavLink>
                                 </li>
-                             
+
                             </ul>
                             <i className="bi bi-list mobile-nav-toggle" />
                         </nav>
                         <NavLink className="appointment-btn scrollto" to={'/appointment'}><span className="d-none d-md-inline">Make an </span>
                             Appointment</NavLink>
+                            
                         <NavLink to={'/login_signin'} className="appointment-btn scrollto">
                             <span className="d-none d-md-inline">Login/ Signup</span>
+                        </NavLink>
+
+                        <NavLink to={'/'} className="appointment-btn scrollto">
+                            <span className="d-none d-md-inline" onClick={() => { dispatch(SignOutAction()) }}>SignOut</span>
                         </NavLink>
                     </div>
                 </header>

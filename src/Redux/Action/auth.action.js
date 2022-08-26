@@ -7,5 +7,9 @@ export const singUpAction = (data) => (dispatch) => {
 }
 
 export const signInAction = (data) => (dispatch) => {
-    dispatch({type : ActionTypes.SIGNIN_USER, payload : data})
+    dispatch({ type: ActionTypes.SIGNIN_USER, payload: data })
+}
+
+export const SignOutAction = () => (dispatch) => {
+    dispatch({ type: ActionTypes.SIGNOUT_USER })
 }
