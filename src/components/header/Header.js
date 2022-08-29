@@ -75,9 +75,9 @@ function Header(props) {
                                 </NavLink>
                                 :
                                 auth.user !== '' ?
-                                    <NavLink to={'/login_signin'} className="appointment-btn scrollto">
+                                    <NavLink to={'/'} className="appointment-btn scrollto">
                                         <span className="d-none d-md-inline" onClick={() => { dispatch(SignOutAction()) }}>Logout</span>
-                                    </NavLink>
+                                    </NavLink> 
                                     :
                                     <NavLink to={'/login_signin'} className="appointment-btn scrollto">
                                         <span className="d-none d-md-inline">Login/ Signup</span>
