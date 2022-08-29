@@ -45,7 +45,7 @@ export const signInApi = (data) => {
                 const user = userCredential.user;
                 console.log(user);
                 if (user.emailVerified) {
-                    resolve({ payload: user});
+                    resolve({ payload: user });
                 } else {
                     resolve({ payload: "please varify your email." });
                 }
@@ -73,7 +73,7 @@ export const signOutApi = () => {
 
         signOut(auth)
             .then(() => {
-                resolve({ payload: "  Sign-out successful." })
+                resolve({ payload: "Logout successful." })
             }).catch((error) => {
                 reject({ payload: error })
             });
