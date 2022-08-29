@@ -45,7 +45,7 @@ export const signInApi = (data) => {
                 const user = userCredential.user;
                 console.log(user);
                 if (user.emailVerified) {
-                    resolve({ payload: "signIn succesfull" });
+                    resolve({ payload: user});
                 } else {
                     resolve({ payload: "please varify your email." });
                 }

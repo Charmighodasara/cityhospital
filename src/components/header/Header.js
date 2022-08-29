@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { themeReducer } from '../../context/Reducer/ThemeReducer';
 import ToggleContext, { themeContext } from '../../context/ThemeContext';
@@ -9,6 +9,8 @@ import Alert from '../Alert/Alert';
 function Header(props) {
     const value = useContext(themeContext);
     console.log(value);
+
+    const auth = useSelector(state => state.auth)
 
     const dispatch = useDispatch()
     return (
@@ -64,14 +66,20 @@ function Header(props) {
                         </nav>
                         <NavLink className="appointment-btn scrollto" to={'/appointment'}><span className="d-none d-md-inline">Make an </span>
                             Appointment</NavLink>
-                            
-                        <NavLink to={'/login_signin'} className="appointment-btn scrollto">
-                            <span className="d-none d-md-inline">Login/ Signup</span>
-                        </NavLink>
 
-                        <NavLink to={'/'} className="appointment-btn scrollto">
-                            <span className="d-none d-md-inline" onClick={() => { dispatch(SignOutAction()) }}>SignOut</span>
-                        </NavLink>
+
+                        {
+                            auth.user === null ?
+                                <NavLink to={'/login_signin'} className="appointment-btn scrollto">
+                                    <span className="d-none d-md-inline">Login/ Signup</span>
+                                </NavLink>
+                                :
+                                <NavLink to={'/login_signin'} className="appointment-btn scrollto">
+                                    <span className="d-none d-md-inline" onClick={() => { dispatch(SignOutAction()) }}>Logout</span>
+                                </NavLink>
+
+                        }
+
                     </div>
                 </header>
             </div>
