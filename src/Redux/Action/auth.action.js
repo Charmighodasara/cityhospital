@@ -17,3 +17,7 @@ export const signedInAction = (data) => (dispatch) => {
 export const SignOutAction = () => (dispatch) => {
     dispatch({ type: ActionTypes.SIGNOUT_USER })
 }
+
+export const signedoutInAction = () => (dispatch) => {
+    dispatch({ type: ActionTypes.SIGNEDOUT_USER })
+}

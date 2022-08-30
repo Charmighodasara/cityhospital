@@ -75,7 +75,7 @@ export const signOutApi = () => {
             .then(() => {
                 resolve({ payload: "Logout successful." })
             }).catch((error) => {
-                reject({ payload: error })
+                reject({ payload: error.code })
             });
     })
 }
