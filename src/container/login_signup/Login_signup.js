@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 import { themeContext } from '../../context/ThemeContext';
 import { useDispatch } from 'react-redux';
-import { signInAction, singUpAction } from '../../Redux/Action/auth.action';
+import { forgotAction, signInAction, singUpAction } from '../../Redux/Action/auth.action';
 
 
 function Login_signup(props) {
@@ -59,8 +59,7 @@ function Login_signup(props) {
         // }
         // console.log(values);
 
-        dispatch(singUpAction(values))
-
+        dispatch(singUpAction(values) , forgotAction(values))
     }
 
     const handleLogin = (values) => {

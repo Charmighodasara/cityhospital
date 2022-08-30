@@ -79,3 +79,7 @@ export const signOutApi = () => {
             });
     })
 }
+
+export const forgotApi = (data)=> {
+    console.log(data , "forgot");
+}

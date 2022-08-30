@@ -21,3 +21,7 @@ export const SignOutAction = () => (dispatch) => {
 export const signedoutInAction = () => (dispatch) => {
     dispatch({ type: ActionTypes.SIGNEDOUT_USER })
 }
+
+export const forgotAction = (data) => (dispatch) => {
+    dispatch({type : ActionTypes.FORGOT_USER , payload : data})
+}
