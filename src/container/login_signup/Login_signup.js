@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { Form, Formik, useFormik } from 'formik';
 import { themeContext } from '../../context/ThemeContext';
 import { useDispatch } from 'react-redux';
-import { forgotAction, signInAction, singUpAction } from '../../Redux/Action/auth.action';
+import { forgotAction, googleSigninAction, signInAction, singUpAction } from '../../Redux/Action/auth.action';
 
 
 function Login_signup(props) {
@@ -45,7 +45,7 @@ function Login_signup(props) {
     let dispatch = useDispatch()
 
     let schema = yup.object().shape(schemaobj);
- 
+
     const handledata = (values) => {
         // let localdata = JSON.parse(localStorage.getItem("user"))
         // localdata.push(values)
@@ -59,7 +59,7 @@ function Login_signup(props) {
         // }
         // console.log(values);
 
-        dispatch(singUpAction(values), forgotAction(values) )
+        dispatch(singUpAction(values), forgotAction(values))
     }
 
     const handleLogin = (values) => {
@@ -67,6 +67,10 @@ function Login_signup(props) {
         dispatch(signInAction(values))
         // console.log(values);
 
+    }
+
+    const googleSignIn = () => {
+        dispatch(googleSigninAction())
     }
 
     const formik = useFormik({
@@ -165,7 +169,12 @@ function Login_signup(props) {
                                     <div className="text-center"><button type="submit">submit</button></div>
                                     :
                                     user === 'login' ?
-                                        <div className="text-center"><button type="submit">Login</button></div>
+                                        <>
+                                            <div className="text-center"><button type="submit">Login</button></div>
+                                            <p className="text-center">or</p>
+                                            <div className="text-center"><button type="submit" onClick={() => { googleSignIn() }}>Login With Google</button></div>
+                                        </>
+
                                         :
                                         <div className="text-center"><button type="submit">signup</button></div>
                             }

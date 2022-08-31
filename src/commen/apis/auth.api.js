@@ -1,6 +1,6 @@
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, onAuthStateChanged, signInWithEmailAndPassword, signOut, sendPasswordResetEmail, signInWithPopup } from "firebase/auth";
 import { auth } from "../../firebase";
-
+import { GoogleAuthProvider } from "firebase/auth";
 
 export const signUpApi = (data) => {
     console.log("signUpApi", data);
@@ -37,7 +37,7 @@ export const signUpApi = (data) => {
 }
 
 export const signInApi = (data) => {
-    // console.log("signInApi", data);
+    console.log("signInApi", data);
 
     return new Promise((resolve, reject) => {
         signInWithEmailAndPassword(auth, data.email, data.password)
@@ -67,7 +67,7 @@ export const signInApi = (data) => {
 }
 
 export const signOutApi = () => {
-    // console.log("signOutApi");
+    console.log("signOutApi");
 
     return new Promise((resolve, reject) => {
 
@@ -92,6 +92,26 @@ export const forgotApi = (data) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 reject({ payload: errorCode })
+            });
+    })
+}
+export const googleSignInApi = (data) => {
+    console.log("googleSignInApi", data);
+    return new Promise((resolve, reject) => {
+        const provider = new GoogleAuthProvider();
+
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                resolve({payload : user})
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.customData.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                reject({payload: errorCode})
             });
     })
 }
