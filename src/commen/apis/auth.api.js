@@ -37,7 +37,7 @@ export const signUpApi = (data) => {
 }
 
 export const signInApi = (data) => {
-    // console.log("signInApi", data);
+    console.log("signInApi", data);
 
     return new Promise((resolve, reject) => {
         signInWithEmailAndPassword(auth, data.email, data.password)
@@ -67,7 +67,7 @@ export const signInApi = (data) => {
 }
 
 export const signOutApi = () => {
-    // console.log("signOutApi");
+    console.log("signOutApi");
 
     return new Promise((resolve, reject) => {
 
@@ -81,17 +81,18 @@ export const signOutApi = () => {
 }
 
 export const forgotApi = (data) => {
-    console.log(data, "forgot");
+    console.log("forgot", data);
 
     return new Promise((resolve, reject) => {
         sendPasswordResetEmail(auth, data.email)
             .then(() => {
-                resolve({ payload: "login successfull." })
+               console.log("abc");
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                reject({ payload: errorCode })
+                // reject({ payload: errorCode })
+                console.log("xyz");
             });
     })
 }

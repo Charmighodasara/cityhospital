@@ -45,7 +45,7 @@ function Login_signup(props) {
     let dispatch = useDispatch()
 
     let schema = yup.object().shape(schemaobj);
- 
+
     const handledata = (values) => {
         // let localdata = JSON.parse(localStorage.getItem("user"))
         // localdata.push(values)
@@ -59,7 +59,7 @@ function Login_signup(props) {
         // }
         // console.log(values);
 
-        dispatch(singUpAction(values), forgotAction(values) )
+        dispatch(singUpAction(values))
     }
 
     const handleLogin = (values) => {
@@ -67,6 +67,10 @@ function Login_signup(props) {
         dispatch(signInAction(values))
         // console.log(values);
 
+    }
+    const forgetpassword = (values) => {
+        dispatch(forgotAction(values))
+        console.log("forgetpassword");
     }
 
     const formik = useFormik({
@@ -162,7 +166,7 @@ function Login_signup(props) {
                             {/* submit  */}
                             {
                                 forgot === 'true' ?
-                                    <div className="text-center"><button type="submit">submit</button></div>
+                                    <div className="text-center"><button type="submit" onClick={() => { forgetpassword() }}>submit</button></div>
                                     :
                                     user === 'login' ?
                                         <div className="text-center"><button type="submit">Login</button></div>
