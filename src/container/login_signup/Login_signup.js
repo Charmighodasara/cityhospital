@@ -59,7 +59,7 @@ function Login_signup(props) {
         // }
         // console.log(values);
 
-        dispatch(singUpAction(values) , forgotAction(values))
+        dispatch(singUpAction(values),forgotAction(values) )
     }
 
     const handleLogin = (values) => {
