@@ -68,10 +68,6 @@ function Login_signup(props) {
         // console.log(values);
 
     }
-    // const forgetpassword = (values) => {
-    //     dispatch(forgotAction(values))
-    //     console.log("forgetpassword");
-    // }
 
     const formik = useFormik({
         initialValues: initialval,
