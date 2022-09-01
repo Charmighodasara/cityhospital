@@ -79,6 +79,7 @@ function Login_signup(props) {
         onSubmit: values => {
             if (user === 'login') {
                 handleLogin(values)
+                forgetpassword(values)
             } else {
                 handledata(values)
             }

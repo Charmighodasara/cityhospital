@@ -48,12 +48,13 @@ function* signOut(action) {
 function* forgot(action){
     try {
         const user = yield call(forgotApi, action.payload);
-        // yield put(setAlert({ text: user.payload, color: "success" }))
+        yield put(setAlert({ text: user.payload, color: "success" }))
         console.log(user);
-
+        yield put(signedInAction(user))
+        history.push('/')
     } catch (e) {
+        yield put(setAlert({ text: e.payload, color: "error" }))
         console.log(e);
-        // yield put(setAlert({ text: e.payload, color: "error" }))
     }
 }
 

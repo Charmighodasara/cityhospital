@@ -24,4 +24,5 @@ export const signedoutInAction = () => (dispatch) => {
 
 export const forgotAction = (data) => (dispatch) => {
     dispatch({type : ActionTypes.FORGOT_USER , payload : data})
+    console.log(data);
 }
