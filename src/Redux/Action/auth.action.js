@@ -24,7 +24,7 @@ export const signedoutInAction = () => (dispatch) => {
 
 export const forgotAction = (data) => (dispatch) => {
     dispatch({ type: ActionTypes.FORGOT_USER, payload: data })
-    console.log();
+    console.log("data");
 }
 
 export const googleSigninAction = () => (dispatch) => {

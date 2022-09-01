@@ -50,6 +50,8 @@ function* forgot(action) {
         const user = yield call(forgotApi, action.payload);
         yield put(setAlert({ text: user.payload, color: "success" }))
         console.log(user);
+        yield put(signedInAction(user))
+        history.push('/')
 
     } catch (e) {
         console.log(e);
