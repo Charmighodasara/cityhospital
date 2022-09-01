@@ -47,25 +47,11 @@ function Login_signup(props) {
     let schema = yup.object().shape(schemaobj);
 
     const handledata = (values) => {
-        // let localdata = JSON.parse(localStorage.getItem("user"))
-        // localdata.push(values)
-        // localStorage.setItem("user", JSON.stringify(localdata))
-
-        // if (localdata === null) {
-        //     localStorage.setItem("user", JSON.stringify([values]))
-        // } else {
-        //     localdata.push(values)
-        //     localStorage.setItem("user", JSON.stringify(localdata))
-        // }
-        // console.log(values);
-
         dispatch(singUpAction(values), forgotAction(values))
     }
 
     const handleLogin = (values) => {
-        // localStorage.setItem("user", "123456")
         dispatch(signInAction(values))
-        // console.log(values);
 
     }
 
@@ -79,11 +65,8 @@ function Login_signup(props) {
         onSubmit: values => {
             if (user === 'login' && forgot === 'flase') {
                 handleLogin(values)
-                // dispatch(signInAction(values))
-                // console.log("login");
             } else if (user === 'signup' && forgot === 'flase') {
                 handledata(values)
-                // dispatch(singUpAction(values))
             }else if (forgot === 'true') {
                 dispatch(forgotAction(values))
             }
