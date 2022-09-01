@@ -77,11 +77,14 @@ function Login_signup(props) {
         initialValues: initialval,
         validationSchema: schema,
         onSubmit: values => {
-            if (user === 'login' && forgot === false) {
+            if (user === 'login' && forgot === 'flase') {
                 handleLogin(values)
-            } else if (user === 'signup' && forgot === false) {
+                // dispatch(signInAction(values))
+                // console.log("login");
+            } else if (user === 'signup' && forgot === 'flase') {
                 handledata(values)
-            }else if (forgot === "true") {
+                // dispatch(singUpAction(values))
+            }else if (forgot === 'true') {
                 dispatch(forgotAction(values))
             }
         },
