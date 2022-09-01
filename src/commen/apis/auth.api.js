@@ -86,19 +86,14 @@ export const forgotApi = (data) => {
     return new Promise((resolve, reject) => {
         sendPasswordResetEmail(auth, data.email)
             .then(() => {
-                console.log("abc");
-                resolve({ payload: "login successfull." })
+                resolve({ payload: "Please check your email." })
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 // reject({ payload: errorCode })
+                    reject({ payload:" something went wrong "  });
 
-                if (errorCode.localeCompare("auth/internal-error") === 0) {
-                    reject({ payload: " something went wrong " });
-                } else {
-                    reject({ payload: errorCode });
-                }
             });
     })
 }
