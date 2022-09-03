@@ -8,7 +8,7 @@ import { forgotAction, signInAction, singUpAction } from '../../Redux/Action/aut
 
 function Login_signup(props) {
     const [user, setUser] = useState('login')
-    const [forgot, setForgot] = useState('flase')
+    const [forgot, setForgot] = useState('false')
 
     let schemaobj, initialval;
     if (forgot === 'true') {
@@ -73,11 +73,11 @@ function Login_signup(props) {
         initialValues: initialval,
         validationSchema: schema,
         onSubmit: values => {
-            if (user === 'login' && forgot === 'flase') {
+            if (user === 'login' && forgot === 'false') {
                 handleLogin(values)
                 // dispatch(signInAction(values))
                 // console.log("login");
-            } else if (user === 'signup' && forgot === 'flase') {
+            } else if (user === 'signup' && forgot === 'false') {
                 handledata(values)
                 // dispatch(singUpAction(values))
             }else if (forgot === 'true') {
