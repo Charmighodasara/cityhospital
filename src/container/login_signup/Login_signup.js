@@ -8,7 +8,7 @@ import { forgotAction, googleSigninAction, signInAction, singUpAction } from '..
 
 function Login_signup(props) {
     const [user, setUser] = useState('login')
-    const [forgot, setForgot] = useState('flase')
+    const [forgot, setForgot] = useState('false')
 
     let schemaobj, initialval;
     if (forgot === 'true') {
@@ -63,9 +63,9 @@ function Login_signup(props) {
         initialValues: initialval,
         validationSchema: schema,
         onSubmit: values => {
-            if (user === 'login' && forgot === 'flase') {
+            if (user === 'login' && forgot === 'false') {
                 handleLogin(values)
-            } else if (user === 'signup' && forgot === 'flase') {
+            } else if (user === 'signup' && forgot === 'false') {
                 handledata(values)
             }else if (forgot === 'true') {
                 dispatch(forgotAction(values))
